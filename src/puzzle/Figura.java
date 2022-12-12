@@ -60,66 +60,67 @@ public class Figura extends JButton implements ActionListener{
     private void Move(){
         Cell[][] board = Board.board;
         try{
-        if(board[xPos][yPos-1].getFigura() == null){
-            Board.board[xPos][yPos-1].setFigura(this);
-            Board.board[xPos][yPos].setFigura(this);
-            yPos--;
-            Puzzle.board.Remover();
-            ComprobarRespuesta();
-        }
+            if(board[xPos][yPos-1].getFigura() == null){
+                Board.board[xPos][yPos-1].setFigura(this);
+                Board.board[xPos][yPos].setFigura(null);
+                yPos--;
+                Puzzle.board.Remover();
+                ComprobarRespuesta();
+                return;
+            }
         }catch(ArrayIndexOutOfBoundsException e){
                 
         }
         
         try{
-        if(board[xPos][yPos+1].getFigura() == null){
-            Board.board[xPos][yPos+1].setFigura(this);
-            Board.board[xPos][yPos].setFigura(this);
-            yPos++;
-            Puzzle.board.Remover();
-            ComprobarRespuesta();
-        }
+            if(board[xPos][yPos+1].getFigura() == null){
+                Board.board[xPos][yPos+1].setFigura(this);
+                Board.board[xPos][yPos].setFigura(null);
+                yPos++;
+                Puzzle.board.Remover();
+                ComprobarRespuesta();
+                return;
+            }
         }catch(ArrayIndexOutOfBoundsException e){
                 
         }
         
         try{
-        if(board[xPos+1][yPos].getFigura() == null){
-            Board.board[xPos+1][yPos].setFigura(this);
-            Board.board[xPos][yPos].setFigura(this);
-            xPos++;
-            Puzzle.board.Remover();
-            ComprobarRespuesta();
-            return;
-        }
+            if(board[xPos+1][yPos].getFigura() == null){
+                Board.board[xPos+1][yPos].setFigura(this);
+                Board.board[xPos][yPos].setFigura(null);
+                xPos++;
+                Puzzle.board.Remover();
+                ComprobarRespuesta();
+                return;
+            }
         }catch(ArrayIndexOutOfBoundsException e){
                 
         }
         
         try{
-        if(board[xPos-1][yPos].getFigura() == null){
-            Board.board[xPos-1][yPos].setFigura(this);
-            Board.board[xPos][yPos].setFigura(this);
-            xPos--;
-            Puzzle.board.Remover();
-            ComprobarRespuesta();
-        }
+            if(board[xPos-1][yPos].getFigura() == null){
+                Board.board[xPos-1][yPos].setFigura(this);
+                Board.board[xPos][yPos].setFigura(null);
+                xPos--;
+                Puzzle.board.Remover();
+                ComprobarRespuesta();
+                return;
+            }
         }catch(ArrayIndexOutOfBoundsException e){     
         }
         
      }
     private void ComprobarRespuesta(){
         Figura figura = null;
-        for(int i=0; i< dimension; i++){
-            for(int j=0; j< dimension; j++){
+        for(int i=0; i < dimension; i++){
+            for(int j=0; j < dimension; j++){
                 figura = Board.board[i][j].getFigura();
                 if(figura == null){
                     continue;
                 }
                 if(figura.getxPos() != figura.getxSolPos() || figura.getyPos() != figura.getySolPos()){
-                
                     return;
-                
                 }
             }
         }

@@ -61,8 +61,8 @@ public class Board extends JPanel{
         Random generador = new Random();
         ArrayList<Cell> copia = new ArrayList<Cell>(completeBoard);
         for(int i=0; i<dimension ; i++){
-            for(int j =0; j< dimension; j++){
-                if(i==dimension-1 && j == dimension-1){
+            for(int j = 0; j< dimension; j++){
+                if(i == dimension-1 && j == dimension-1){
                     board[i][j] = new  Cell(i,j);
                     continue;
                 }
@@ -78,8 +78,8 @@ public class Board extends JPanel{
     }        
             
     private void Actualizar(){
-        for(int i =0; i< dimension; i++){
-            for(int j=0; j<dimension; j++){
+        for(int i = 0; i<dimension; i++){
+            for(int j = 0; j<dimension; j++){
                 if(board[i][j].getFigura()== null){
                     empty = new JLabel();
                     empty.setPreferredSize(new Dimension(figuraWidth, figuraHeight));
@@ -93,7 +93,7 @@ public class Board extends JPanel{
         Puzzle.contenedor.validate();
     }
     
-    private void Remover(){
+    public void Remover(){
         this.removeAll();
         Actualizar();
     }
